@@ -1,4 +1,7 @@
-/* BST Deletion */
+/*
+For this example it will be always BST bcz we are doing insertion in BST.
+Use this function for abrbitary Binary tree.
+*/
 
 #include<bits/stdc++.h>
 
