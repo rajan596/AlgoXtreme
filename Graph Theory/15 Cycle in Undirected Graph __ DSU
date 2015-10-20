@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long int ll;
+const ll mod=1e9+7;
+
+#define fin freopen("input.txt","r",stdin)
+#define fout freopen("output.txt","w",stdout)
+
+void createSets(ll n,ll parent[],ll Size[]) {
+    for(ll i=1;i<=n;i++) {
+        parent[i]=i;
+        Size[i]=1;
+    }
+}
+
+ll findParent(ll x,ll parent[]) {
+    if(parent[x]==x) return x;
+    return findParent(parent[x],parent);
+}
+
+void mergeSets(ll a,ll b,ll parent[],ll Size[]) {
+    ll x=findParent(a,parent);
+    ll y=findParent(b,parent);
+
+    if(x==y) return;
+
+    if(Size[x]>=Size[y]) {
+        parent[y]=x;
+        Size[x]+=Size[y];
+    }else {
+        parent[x]=y;
+        Size[y]+=Size[x];
+    }
+}
+
+bool hasCycle(ll n,ll parent[] , ll Size[] , vector< pair<ll,ll> > edges) {
+    /* Traverse all the edges */
+
+    for(int i=0;i<edges.size() ; i++){
+        /* Find both node's parent*/
+        ll a=findParent(edges[i].first , parent);
+        ll b=findParent(edges[i].second , parent);
+
+        /*if the parents are same that means they are already connected. So there is a cycle*/
+        if(a==b)
+            return 1;
+        else       /*no cycle , Just merge both the nodes*/
+            mergeSets(edges[i].first , edges[i].second , parent , Size);
+    }
+    return 0;
+}
+
+int main()
+{
+    fin;
+    ll  n,  // no. of nodes
+        m,  // no. of edges
+        i,j;
+
+    scanf("%lld %lld",&n,&m);
+
+    ll  parent[n+1], // stores parent of node
+        Size[n+1];
+    vector< pair<ll,ll> > edges; // edges of a graph
+
+    createSets(n,parent,Size);
+
+    for(i=0;i<m;i++) {
+        ll a,b;
+        scanf("%lld %lld",&a,&b);
+        edges.push_back(make_pair(a,b));
+    }
+
+    printf("Graph has Cycle ??... %s" , hasCycle(n,parent , Size , edges) == 0? "No" : "YES");
+
+    return 0;
+}

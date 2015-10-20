@@ -1,0 +1,26 @@
+>>> HEAP TREE : 
+        It is used insted of Prioriry Queue (Same function) But it has less Complexity.
+        Heap Tree is complete tree ( where no branch is n + 1 levels deep until all other branches are n levels deep). 
+        it is always the leftmost node(s) that are filled first. 
+>>> VECTOR :
+        REFERENCE:https://www.topcoder.com/community/data-science/data-science-tutorials/power-up-c-with-the-standard-template-library-part-1/
+        vector< vector<int> > :: Leave a space to avoid any error..  (Multi dimentional array)
+        v.size() returns unsigned.
+        If you use push_back() after resize(), it will add elements AFTER the newly allocated size, but not INTO it.
+        v.resize(25);   Resize vector
+        v.clear();      Vector contains 0 elements. It means deletes all vector elements.
+        vector<int> v2(v1);  OR vector<int> v2(v1);    Initialize vector from other vector or just copy vector to new vector.
+        vector<int> Data(1000);   vector with specific size
+        vector<string> names(20, “UN”);    size 20 Default value "UN"
+        vector< vector<int> > Matrix(N, vector<int>(M, -1));  => N*M matrix default value -1
+        object can perform the operations : take value (unary *), comparison (<), and increment/decrement (++/–). 
+           Objects with these properties that are associated with containers are called iterators.
+        vector<int> v3(v.begin(), v.end()); // v3 equals to v2 
+           int data[] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 }; 
+           vector<int> primes(data, data+(sizeof(data) / sizeof(data[0]))); 
+        sort(X.begin(), X.end()); // Sort array in ascending order 
+        sort(X.rbegin(), X.rend()); // Sort array in descending order using with reverse iterators 
+        #define all(c) c.begin(), c.end()    //useful macro
+        sort(all(X)); 
+>>> 
+>>>
