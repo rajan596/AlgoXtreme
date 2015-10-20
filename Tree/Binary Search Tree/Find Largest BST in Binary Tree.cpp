@@ -55,7 +55,7 @@ TreeInfo findLargestBSTUtil(Node *head) {
     LeftTree=findLargestBSTUtil(head->left);
     RightTree=findLargestBSTUtil(head->right);
 
-    /* if this root forms is part of any BST */
+    /* if this root forms BST with childs  */
     if((head->data > LeftTree.mx) && (head->data < RightTree.mn) &&
        LeftTree.isBST && RightTree.isBST) {
 
