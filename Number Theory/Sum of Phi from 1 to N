@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long int
+#define print(a) cout<<a
+#define T ll t; cin>>t ; while(t--)
+#define fin freopen("input.txt","r",stdin)
+#define fout freopen("op.txt","w",stdout)
+#define fastio ios_base::sync_with_stdio(false); cin.tie(0)
+#define debug(s,n) cout<<">> "<<s<<" : "<<n<<endl
+#define pf(n) cout<<n<<endl;
+
+ll sz=1e7;
+ll phi[10000007];
+ll ans[10000007];
+
+void preprocess() {
+
+    for(ll i=1;i<=sz;i++)
+        phi[i]=i;
+
+    for(ll i=2;i<=sz;i++) {
+        if(phi[i]==i) {
+        	phi[i]=i-1;
+            for(ll j=2*i;j<=sz;j+=i) {
+                phi[j]-=phi[j]/i;
+            }
+        }
+    }
+	  
+	  /* Prefix Sum */
+    ans[0]=0;
+    for(ll i=1;i<=sz;i++)
+        ans[i]+=phi[i] + ans[i-1];
+}
+
+int main(){
+
+    preprocess();
+
+    T {
+        ll n;
+        cin>>n;
+
+        pf(ans[n]);
+    }
+
+    return 0;
+}
