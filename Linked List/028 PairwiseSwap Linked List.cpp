@@ -40,19 +40,16 @@ void append(node **head,int data) {
     temp->next=newNode;
 }
 
-node *pairwiseSwap(node **head) {
+node *pairwiseSwap(node *head) {
 
-    if((*head)==NULL || (*head)->next==NULL)
-        return *head;
+    if(head==NULL || head->next==NULL)
+        return head;
 
-    node *root=pairwiseSwap(&((*head)->next->next));
+    node *f1=head,*f2=head->next;
 
-    node *temp=(*head)->next;
-    (*head)->next=root;
-    temp->next=(*head);
-    (*head)=temp;
-
-    return *head;
+    f1->next=pairwiseSwap(f2->next);
+    f2->next=f1;
+    return f2;
 }
 
 int main(){
@@ -66,7 +63,7 @@ int main(){
 
     printList(head);
     printf("\n");
-    head=pairwiseSwap(&head);
+    head=pairwiseSwap(head);
     printList(head);
     printf("\n");
 
