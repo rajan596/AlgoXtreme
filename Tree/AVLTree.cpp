@@ -105,7 +105,7 @@ Node* AVLTree::insertKeyRecur(Node *head,int key){
     head->height=1+max(height(head->left),height(head->right));
 
     if(balance>1){ // L
-        if(head->key > key){ // LL
+        if(head->left->key > key){ // LL
             return rightRotate(head);
         }else { // LR
             head->left=leftRotate(head->left);
@@ -113,7 +113,7 @@ Node* AVLTree::insertKeyRecur(Node *head,int key){
         }
     }
     else if(balance<-1){ // R
-        if(head->key<key) { // RR
+        if(head->right->key<key) { // RR
             return leftRotate(head);
         }else {
             head->right=rightRotate(head->right);
